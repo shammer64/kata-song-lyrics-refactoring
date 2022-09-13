@@ -36,23 +36,23 @@ public class SongGenerator {
         return sb.toString();
     }
 
-    private String thirdVerse() {
-        return "There was an old lady who swallowed a bird;\n" +
-                "How absurd to swallow a bird.\n" +
-                "She swallowed the bird to catch the spider,\n" +
-                "She swallowed the spider to catch the fly;\n" +
-                "I don't know why she swallowed a fly - perhaps she'll die!\n" +
-                "\n";
-    }
-
     private String firstVerse() {
         return firstLineEarlyVerses("fly", ".") + lastLineEarlyVerses();
     }
 
     private String secondVerse() {
         return firstLineEarlyVerses("spider", ";") +
-                exclamationMiddleVerses() +
+                exclamationMiddleVerses(2) +
                 transitionLineMiddleVerses() +
+                lastLineEarlyVerses();
+    }
+
+    private String thirdVerse() {
+        return firstLineEarlyVerses("bird", ";") +
+                exclamationMiddleVerses(3) +
+//                "How absurd to swallow a bird.\n" +
+                "She swallowed the bird to catch the spider,\n" +
+                "She swallowed the spider to catch the fly;\n" +
                 lastLineEarlyVerses();
     }
 
@@ -62,6 +62,14 @@ public class SongGenerator {
 
     private String lastLineEarlyVerses() {
         return "I don't know why she swallowed a fly - perhaps she'll die!\n\n";
+    }
+
+    private String exclamationMiddleVerses(int verseNumber) {
+        String[] exclamations = new String[] {
+                "That wriggled and wiggled and tickled inside her.\n",
+                "How absurd to swallow a bird.\n"
+        };
+        return exclamations[verseNumber - 2];
     }
 
     private String exclamationMiddleVerses() {
