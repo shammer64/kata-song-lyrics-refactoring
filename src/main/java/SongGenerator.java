@@ -2,10 +2,10 @@ public class SongGenerator {
 
     public static final String[] EXCLAMATIONS = new String[]{
             "That wriggled and wiggled and tickled inside her.\n",
-            "How absurd to swallow a bird.\n",
-            "Fancy that to swallow a cat!\n",
-            "What a hog, to swallow a dog!\n",
-            "I don't know how she swallowed a cow!\n"
+            "How absurd to swallow a %s.\n",
+            "Fancy that to swallow a %s!\n",
+            "What a hog, to swallow a %s!\n",
+            "I don't know how she swallowed a %s!\n"
     };
     public static final String[] ANIMALS = new String[]{"fly", "spider", "bird", "cat", "dog", "cow"};
 
@@ -44,7 +44,7 @@ public class SongGenerator {
     }
 
     private String exclamationMiddleVerses(int verseIndex) {
-        return EXCLAMATIONS[verseIndex - 1];
+        return String.format(EXCLAMATIONS[verseIndex - 1], ANIMALS[verseIndex]);
     }
 
     private String transitionLineMiddleVerses(String animal1, String animal2, String punctuation) {
