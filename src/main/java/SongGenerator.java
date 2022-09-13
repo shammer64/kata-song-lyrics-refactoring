@@ -7,19 +7,9 @@ public class SongGenerator {
         sb.append(middleVerse(2));
         sb.append(middleVerse(3));
         sb.append(middleVerse(4));
-
-        String song = "There was an old lady who swallowed a cow;\n" +
-                "I don't know how she swallowed a cow!\n" +
-                "She swallowed the cow to catch the dog,\n" +
-                "She swallowed the dog to catch the cat,\n" +
-                "She swallowed the cat to catch the bird,\n" +
-                "She swallowed the bird to catch the spider,\n" +
-                "She swallowed the spider to catch the fly;\n" +
-                "I don't know why she swallowed a fly - perhaps she'll die!\n" +
-                "\n";
-
-        sb.append(song);
+        sb.append(middleVerse(5));
         sb.append(lastVerse());
+
         return sb.toString();
     }
 
@@ -28,7 +18,7 @@ public class SongGenerator {
     }
 
     private String middleVerse(int verseIndex) {
-        String[] animals = new String[] {"fly", "spider", "bird", "cat", "dog"};
+        String[] animals = new String[] {"fly", "spider", "bird", "cat", "dog", "cow"};
         String verse = firstLineEarlyVerses(animals[verseIndex], ";") +
                 exclamationMiddleVerses(verseIndex);
         for (int i = verseIndex; i >= 1; i--) {
@@ -52,7 +42,8 @@ public class SongGenerator {
                 "That wriggled and wiggled and tickled inside her.\n",
                 "How absurd to swallow a bird.\n",
                 "Fancy that to swallow a cat!\n",
-                "What a hog, to swallow a dog!\n"
+                "What a hog, to swallow a dog!\n",
+                "I don't know how she swallowed a cow!\n"
         };
         return exclamations[verseIndex - 1];
     }
