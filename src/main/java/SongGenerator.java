@@ -3,8 +3,9 @@ public class SongGenerator {
         StringBuffer sb = new StringBuffer();
 
         sb.append(firstVerse());
-        sb.append(secondVerse());
-        sb.append(thirdVerse());
+        sb.append(middleVerse(1));
+        sb.append(middleVerse(2));
+        // sb.append(thirdVerse());
 
         String song = "There was an old lady who swallowed a cat;\n" +
                 "Fancy that to swallow a cat!\n" +
@@ -40,19 +41,16 @@ public class SongGenerator {
         return firstLineEarlyVerses("fly", ".") + lastLineEarlyVerses();
     }
 
-    private String secondVerse() {
-        return firstLineEarlyVerses("spider", ";") +
-                exclamationMiddleVerses(2) +
-                transitionLineMiddleVerses("spider", "fly", ";") +
-                lastLineEarlyVerses();
-    }
-
-    private String thirdVerse() {
-        return firstLineEarlyVerses("bird", ";") +
-                exclamationMiddleVerses(3) +
-                transitionLineMiddleVerses("bird", "spider", ",") +
-                transitionLineMiddleVerses("spider", "fly", ";") +
-                lastLineEarlyVerses();
+    private String middleVerse(int verseIndex) {
+        String[] animals = new String[] {"fly", "spider", "bird"};
+        String verse = firstLineEarlyVerses(animals[verseIndex], ";") +
+                exclamationMiddleVerses(verseIndex);
+        do {
+            String punctuation = (verseIndex == 2) ? "," : ";";
+            verse = verse + transitionLineMiddleVerses(animals[verseIndex], animals[verseIndex - 1], punctuation);
+        } while (verseIndex-- >= 2);
+        verse = verse + lastLineEarlyVerses();
+        return verse;
     }
 
     private String firstLineEarlyVerses(String animal, String punctuation) {
@@ -63,12 +61,12 @@ public class SongGenerator {
         return "I don't know why she swallowed a fly - perhaps she'll die!\n\n";
     }
 
-    private String exclamationMiddleVerses(int verseNumber) {
+    private String exclamationMiddleVerses(int verseIndex) {
         String[] exclamations = new String[] {
                 "That wriggled and wiggled and tickled inside her.\n",
                 "How absurd to swallow a bird.\n"
         };
-        return exclamations[verseNumber - 2];
+        return exclamations[verseIndex - 1];
     }
 
     private String transitionLineMiddleVerses(String animal1, String animal2, String punctuation) {
