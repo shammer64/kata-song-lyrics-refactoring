@@ -43,15 +43,15 @@ public class SongGenerator {
     private String secondVerse() {
         return firstLineEarlyVerses("spider", ";") +
                 exclamationMiddleVerses(2) +
-                transitionLineMiddleVerses("spider", "fly") +
+                transitionLineMiddleVerses("spider", "fly", ";") +
                 lastLineEarlyVerses();
     }
 
     private String thirdVerse() {
         return firstLineEarlyVerses("bird", ";") +
                 exclamationMiddleVerses(3) +
-                "She swallowed the bird to catch the spider,\n" +
-                "She swallowed the spider to catch the fly;\n" +
+                transitionLineMiddleVerses("bird", "spider", ",") +
+                transitionLineMiddleVerses("spider", "fly", ";") +
                 lastLineEarlyVerses();
     }
 
@@ -71,8 +71,8 @@ public class SongGenerator {
         return exclamations[verseNumber - 2];
     }
 
-    private String transitionLineMiddleVerses(String animal1, String animal2) {
-        return String.format("She swallowed the %s to catch the %s;\n", animal1, animal2);
+    private String transitionLineMiddleVerses(String animal1, String animal2, String punctuation) {
+        return String.format("She swallowed the %s to catch the %s%s\n", animal1, animal2, punctuation);
     }
 
     private String lastVerse() {
