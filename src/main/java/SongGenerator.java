@@ -5,16 +5,9 @@ public class SongGenerator {
         sb.append(firstVerse());
         sb.append(middleVerse(1));
         sb.append(middleVerse(2));
-        // sb.append(thirdVerse());
+        sb.append(middleVerse(3));
 
-        String song = "There was an old lady who swallowed a cat;\n" +
-                "Fancy that to swallow a cat!\n" +
-                "She swallowed the cat to catch the bird,\n" +
-                "She swallowed the bird to catch the spider,\n" +
-                "She swallowed the spider to catch the fly;\n" +
-                "I don't know why she swallowed a fly - perhaps she'll die!\n" +
-                "\n" +
-                "There was an old lady who swallowed a dog;\n" +
+        String song = "There was an old lady who swallowed a dog;\n" +
                 "What a hog, to swallow a dog!\n" +
                 "She swallowed the dog to catch the cat,\n" +
                 "She swallowed the cat to catch the bird,\n" +
@@ -42,13 +35,13 @@ public class SongGenerator {
     }
 
     private String middleVerse(int verseIndex) {
-        String[] animals = new String[] {"fly", "spider", "bird"};
+        String[] animals = new String[] {"fly", "spider", "bird", "cat"};
         String verse = firstLineEarlyVerses(animals[verseIndex], ";") +
                 exclamationMiddleVerses(verseIndex);
-        do {
-            String punctuation = (verseIndex == 2) ? "," : ";";
-            verse = verse + transitionLineMiddleVerses(animals[verseIndex], animals[verseIndex - 1], punctuation);
-        } while (verseIndex-- >= 2);
+        for (int i = verseIndex; i >= 1; i--) {
+            String punctuation = (i != 1) ? "," : ";";
+            verse = verse + transitionLineMiddleVerses(animals[i], animals[i - 1], punctuation);
+        }
         verse = verse + lastLineEarlyVerses();
         return verse;
     }
@@ -64,7 +57,8 @@ public class SongGenerator {
     private String exclamationMiddleVerses(int verseIndex) {
         String[] exclamations = new String[] {
                 "That wriggled and wiggled and tickled inside her.\n",
-                "How absurd to swallow a bird.\n"
+                "How absurd to swallow a bird.\n",
+                "Fancy that to swallow a cat!\n"
         };
         return exclamations[verseIndex - 1];
     }
