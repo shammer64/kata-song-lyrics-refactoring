@@ -1,4 +1,14 @@
 public class SongGenerator {
+
+    public static final String[] EXCLAMATIONS = new String[]{
+            "That wriggled and wiggled and tickled inside her.\n",
+            "How absurd to swallow a bird.\n",
+            "Fancy that to swallow a cat!\n",
+            "What a hog, to swallow a dog!\n",
+            "I don't know how she swallowed a cow!\n"
+    };
+    public static final String[] ANIMALS = new String[]{"fly", "spider", "bird", "cat", "dog", "cow"};
+
     String generateSongLyrics() {
         StringBuffer sb = new StringBuffer();
 
@@ -18,12 +28,11 @@ public class SongGenerator {
     }
 
     private String middleVerse(int verseIndex) {
-        String[] animals = new String[] {"fly", "spider", "bird", "cat", "dog", "cow"};
-        String verse = firstLineEarlyVerses(animals[verseIndex], ";") +
+        String verse = firstLineEarlyVerses(ANIMALS[verseIndex], ";") +
                 exclamationMiddleVerses(verseIndex);
         for (int i = verseIndex; i >= 1; i--) {
             String punctuation = (i != 1) ? "," : ";";
-            verse = verse + transitionLineMiddleVerses(animals[i], animals[i - 1], punctuation);
+            verse = verse + transitionLineMiddleVerses(ANIMALS[i], ANIMALS[i - 1], punctuation);
         }
         verse = verse + lastLineEarlyVerses();
         return verse;
@@ -38,14 +47,7 @@ public class SongGenerator {
     }
 
     private String exclamationMiddleVerses(int verseIndex) {
-        String[] exclamations = new String[] {
-                "That wriggled and wiggled and tickled inside her.\n",
-                "How absurd to swallow a bird.\n",
-                "Fancy that to swallow a cat!\n",
-                "What a hog, to swallow a dog!\n",
-                "I don't know how she swallowed a cow!\n"
-        };
-        return exclamations[verseIndex - 1];
+        return EXCLAMATIONS[verseIndex - 1];
     }
 
     private String transitionLineMiddleVerses(String animal1, String animal2, String punctuation) {
