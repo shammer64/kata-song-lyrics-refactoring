@@ -3,14 +3,9 @@ public class SongGenerator {
         StringBuffer sb = new StringBuffer();
 
         sb.append(firstVerse());
+        sb.append(nextVerse());
 
-        String song =
-                "There was an old lady who swallowed a spider;\n" +
-                "That wriggled and wiggled and tickled inside her.\n" +
-                "She swallowed the spider to catch the fly;\n" +
-                "I don't know why she swallowed a fly - perhaps she'll die!\n" +
-                "\n" +
-                "There was an old lady who swallowed a bird;\n" +
+        String song = "There was an old lady who swallowed a bird;\n" +
                 "How absurd to swallow a bird.\n" +
                 "She swallowed the bird to catch the spider,\n" +
                 "She swallowed the spider to catch the fly;\n" +
@@ -46,6 +41,17 @@ public class SongGenerator {
         return sb.toString();
     }
 
+    private String firstVerse() {
+        return firstLineEarlyVerses("fly", ".") + lastLineEarlyVerses();
+    }
+
+    private String nextVerse() {
+        return firstLineEarlyVerses("spider", ";") +
+                "That wriggled and wiggled and tickled inside her.\n" +
+                "She swallowed the spider to catch the fly;\n" +
+                lastLineEarlyVerses();
+    }
+
     private String lastVerse() {
         return firstLineLastVerse() + finalLine();
     }
@@ -58,12 +64,8 @@ public class SongGenerator {
         return "...She's dead, of course!";
     }
 
-    private String firstVerse() {
-        return firstLineEarlyVerses() + lastLineEarlyVerses();
-    }
-
-    private String firstLineEarlyVerses() {
-        return "There was an old lady who swallowed a fly.\n";
+    private String firstLineEarlyVerses(String animal, String punctuation) {
+        return String.format("There was an old lady who swallowed a %s%s\n", animal, punctuation);
     }
 
     private String lastLineEarlyVerses() {
