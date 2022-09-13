@@ -3,15 +3,10 @@ public class SongGenerator {
         StringBuffer sb = new StringBuffer();
 
         sb.append(firstVerse());
-        sb.append(nextVerse());
+        sb.append(secondVerse());
+        sb.append(thirdVerse());
 
-        String song = "There was an old lady who swallowed a bird;\n" +
-                "How absurd to swallow a bird.\n" +
-                "She swallowed the bird to catch the spider,\n" +
-                "She swallowed the spider to catch the fly;\n" +
-                "I don't know why she swallowed a fly - perhaps she'll die!\n" +
-                "\n" +
-                "There was an old lady who swallowed a cat;\n" +
+        String song = "There was an old lady who swallowed a cat;\n" +
                 "Fancy that to swallow a cat!\n" +
                 "She swallowed the cat to catch the bird,\n" +
                 "She swallowed the bird to catch the spider,\n" +
@@ -41,11 +36,20 @@ public class SongGenerator {
         return sb.toString();
     }
 
+    private String thirdVerse() {
+        return "There was an old lady who swallowed a bird;\n" +
+                "How absurd to swallow a bird.\n" +
+                "She swallowed the bird to catch the spider,\n" +
+                "She swallowed the spider to catch the fly;\n" +
+                "I don't know why she swallowed a fly - perhaps she'll die!\n" +
+                "\n";
+    }
+
     private String firstVerse() {
         return firstLineEarlyVerses("fly", ".") + lastLineEarlyVerses();
     }
 
-    private String nextVerse() {
+    private String secondVerse() {
         return firstLineEarlyVerses("spider", ";") +
                 exclamationMiddleVerses() +
                 transitionLineMiddleVerses() +
