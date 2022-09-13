@@ -13,11 +13,8 @@ public class SongGenerator {
         StringBuffer sb = new StringBuffer();
 
         sb.append(firstVerse());
-        sb.append(middleVerse(1));
-        sb.append(middleVerse(2));
-        sb.append(middleVerse(3));
-        sb.append(middleVerse(4));
-        sb.append(middleVerse(5));
+        for (int verseIndex = 1; verseIndex < ANIMALS.length; verseIndex++)
+            sb.append(middleVerse(verseIndex));
         sb.append(lastVerse());
 
         return sb.toString();
