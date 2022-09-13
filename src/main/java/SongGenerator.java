@@ -47,19 +47,26 @@ public class SongGenerator {
     }
 
     private String lastVerse() {
-        return "There was an old lady who swallowed a horse...\n" +
-                "...She's dead, of course!";
+        return firstLineLastVerse() + finalLine();
+    }
+
+    private String firstLineLastVerse() {
+        return "There was an old lady who swallowed a horse...\n";
+    }
+
+    private String finalLine() {
+        return "...She's dead, of course!";
     }
 
     private String firstVerse() {
-        return firstLine() + lastLine();
+        return firstLineEarlyVerses() + lastLineEarlyVerses();
     }
 
-    private String firstLine() {
+    private String firstLineEarlyVerses() {
         return "There was an old lady who swallowed a fly.\n";
     }
 
-    private String lastLine() {
+    private String lastLineEarlyVerses() {
         return "I don't know why she swallowed a fly - perhaps she'll die!\n\n";
     }
 
