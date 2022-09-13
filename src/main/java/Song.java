@@ -1,6 +1,10 @@
 class Song {
 
     public static void main(String[] args) {
+         System.out.println(generateSongLyrics());
+    }
+
+    private static String generateSongLyrics() {
         StringBuffer sb = new StringBuffer();
 
         String song = "There was an old lady who swallowed a fly.\n" +
@@ -45,6 +49,6 @@ class Song {
                 "...She's dead, of course!";
 
         sb.append(song);
-        System.out.println(sb.toString());
+        return sb.toString();
     }
 }
