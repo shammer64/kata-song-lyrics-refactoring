@@ -47,9 +47,25 @@ public class SongGenerator {
 
     private String nextVerse() {
         return firstLineEarlyVerses("spider", ";") +
-                "That wriggled and wiggled and tickled inside her.\n" +
-                "She swallowed the spider to catch the fly;\n" +
+                exclamationMiddleVerses() +
+                transitionLineMiddleVerses() +
                 lastLineEarlyVerses();
+    }
+
+    private String firstLineEarlyVerses(String animal, String punctuation) {
+        return String.format("There was an old lady who swallowed a %s%s\n", animal, punctuation);
+    }
+
+    private String lastLineEarlyVerses() {
+        return "I don't know why she swallowed a fly - perhaps she'll die!\n\n";
+    }
+
+    private String exclamationMiddleVerses() {
+        return "That wriggled and wiggled and tickled inside her.\n";
+    }
+
+    private String transitionLineMiddleVerses() {
+        return "She swallowed the spider to catch the fly;\n";
     }
 
     private String lastVerse() {
@@ -62,14 +78,6 @@ public class SongGenerator {
 
     private String finalLine() {
         return "...She's dead, of course!";
-    }
-
-    private String firstLineEarlyVerses(String animal, String punctuation) {
-        return String.format("There was an old lady who swallowed a %s%s\n", animal, punctuation);
-    }
-
-    private String lastLineEarlyVerses() {
-        return "I don't know why she swallowed a fly - perhaps she'll die!\n\n";
     }
 
 }
