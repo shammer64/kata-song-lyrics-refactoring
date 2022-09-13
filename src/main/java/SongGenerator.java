@@ -48,8 +48,14 @@ public class SongGenerator {
     }
 
     private String firstVerse() {
-        return "There was an old lady who swallowed a fly.\n" +
-                "I don't know why she swallowed a fly - perhaps she'll die!\n" +
-                "\n";
+        return firstLine() + lastLine();
+    }
+
+    private String lastLine() {
+        return "I don't know why she swallowed a fly - perhaps she'll die!\n\n";
+    }
+
+    private String firstLine() {
+        return "There was an old lady who swallowed a fly.\n";
     }
 }
