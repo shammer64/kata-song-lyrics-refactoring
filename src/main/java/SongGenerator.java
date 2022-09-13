@@ -39,23 +39,28 @@ public class SongGenerator {
                 "She swallowed the bird to catch the spider,\n" +
                 "She swallowed the spider to catch the fly;\n" +
                 "I don't know why she swallowed a fly - perhaps she'll die!\n" +
-                "\n" +
-                "There was an old lady who swallowed a horse...\n" +
-                "...She's dead, of course!";
+                "\n";
 
         sb.append(song);
+        sb.append(lastVerse());
         return sb.toString();
+    }
+
+    private String lastVerse() {
+        return "There was an old lady who swallowed a horse...\n" +
+                "...She's dead, of course!";
     }
 
     private String firstVerse() {
         return firstLine() + lastLine();
     }
 
+    private String firstLine() {
+        return "There was an old lady who swallowed a fly.\n";
+    }
+
     private String lastLine() {
         return "I don't know why she swallowed a fly - perhaps she'll die!\n\n";
     }
 
-    private String firstLine() {
-        return "There was an old lady who swallowed a fly.\n";
-    }
 }
