@@ -2,9 +2,9 @@ public class SongGenerator {
     String generateSongLyrics() {
         StringBuffer sb = new StringBuffer();
 
-        String song = "There was an old lady who swallowed a fly.\n" +
-                "I don't know why she swallowed a fly - perhaps she'll die!\n" +
-                "\n" +
+        sb.append(firstVerse());
+
+        String song =
                 "There was an old lady who swallowed a spider;\n" +
                 "That wriggled and wiggled and tickled inside her.\n" +
                 "She swallowed the spider to catch the fly;\n" +
@@ -45,5 +45,11 @@ public class SongGenerator {
 
         sb.append(song);
         return sb.toString();
+    }
+
+    private String firstVerse() {
+        return "There was an old lady who swallowed a fly.\n" +
+                "I don't know why she swallowed a fly - perhaps she'll die!\n" +
+                "\n";
     }
 }
