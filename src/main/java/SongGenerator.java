@@ -4,14 +4,8 @@ public class SongGenerator {
         StringBuffer sb = new StringBuffer();
 
         sb.append(firstStanza());
-
-        String song =
-                "There was an old lady who swallowed a spider;\n" +
-                        "That wriggled and wiggled and tickled inside her.\n" +
-                        "She swallowed the spider to catch the fly;\n" +
-                        "I don't know why she swallowed a fly - perhaps she'll die!\n" +
-                        "\n" +
-                        "There was an old lady who swallowed a bird;\n" +
+        sb.append(secondStanza());
+        String song = "There was an old lady who swallowed a bird;\n" +
                         "How absurd to swallow a bird.\n" +
                         "She swallowed the bird to catch the spider,\n" +
                         "She swallowed the spider to catch the fly;\n" +
@@ -47,8 +41,19 @@ public class SongGenerator {
         return sb.toString();
     }
 
+    private String secondStanza() {
+        return firstLine("spider", ";") +
+                "That wriggled and wiggled and tickled inside her.\n" +
+                "She swallowed the spider to catch the fly;\n" +
+                secondLine();
+    }
+
+    private String firstLineSecondStanza() {
+        return "There was an old lady who swallowed a spider;\n";
+    }
+
     private String lastStanza() {
-        return firstLineLastStanza() +
+        return firstLine("horse", "...") +
                 lastLineLastStanza();
     }
 
@@ -56,20 +61,15 @@ public class SongGenerator {
         return "...She's dead, of course!";
     }
 
-    private String firstLineLastStanza() {
-        return "There was an old lady who swallowed a horse...\n";
-    }
-
     private String firstStanza() {
-        return firstLine() +
+        return firstLine("fly", ".") +
                 secondLine();
     }
 
     private String secondLine() {
         return "I don't know why she swallowed a fly - perhaps she'll die!\n\n";
     }
-
-    private String firstLine() {
-        return "There was an old lady who swallowed a fly.\n";
+    private String firstLine(String animal, String punc){
+        return String.format("There was an old lady who swallowed a %s%s\n", animal, punc);
     }
 }
