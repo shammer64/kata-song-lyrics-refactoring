@@ -45,17 +45,16 @@ public class SongGenerator {
     private String secondStanza() {
         return firstLineOfStanza("spider", ";") +
                 secondLineOfStanza(2) +
-                thirdLineOfStanza() +
+                thirdLineOfStanza("spider", "fly", ";") +
                 lastLineOfStanza();
     }
 
     private String thirdStanza() {
         return firstLineOfStanza("bird", ";") +
                 secondLineOfStanza(3) +
-                "She swallowed the bird to catch the spider,\n" +
-                "She swallowed the spider to catch the fly;\n" +
-                "I don't know why she swallowed a fly - perhaps she'll die!\n" +
-                "\n";
+                thirdLineOfStanza("bird", "spider", ",") +
+                thirdLineOfStanza("spider", "fly", ";") +
+                lastLineOfStanza();
     }
     private String lastStanza() {
         return firstLineOfStanza("horse", "...") +
@@ -74,8 +73,8 @@ public class SongGenerator {
         return secondLines[stanzaNumber - 2];
     }
 
-    private String thirdLineOfStanza() {
-        return "She swallowed the spider to catch the fly;\n";
+    private String thirdLineOfStanza(String animal1, String animal2, String punc) {
+        return String.format("She swallowed the %s to catch the %s%s\n", animal1, animal2, punc);
     }
 
     private String lastLineOfStanza() {
