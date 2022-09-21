@@ -39,24 +39,21 @@ public class SongGenerator {
     private String secondStanza() {
         return firstLineOfStanza("spider", ";") +
                 secondLineOfStanza(2) +
-                thirdLineOfStanza("spider", "fly", ";") +
+                middleLinesOfStanza(2) +
                 lastLineOfStanza();
     }
 
     private String thirdStanza() {
         return firstLineOfStanza("bird", ";") +
                 secondLineOfStanza(3) +
-                thirdLineOfStanza("bird", "spider", ",") +
-                thirdLineOfStanza("spider", "fly", ";") +
+                middleLinesOfStanza(3) +
                 lastLineOfStanza();
     }
 
     private String fourthStanza() {
         return firstLineOfStanza("cat", ";") +
                 secondLineOfStanza(4) +
-                thirdLineOfStanza("cat", "bird", ",") +
-                thirdLineOfStanza("bird", "spider", ",") +
-                thirdLineOfStanza("spider", "fly", ";") +
+                middleLinesOfStanza(4) +
                 lastLineOfStanza();
     }
 
@@ -78,8 +75,20 @@ public class SongGenerator {
         return secondLines[stanzaNumber - 2];
     }
 
-    private String thirdLineOfStanza(String animal1, String animal2, String punc) {
-        return String.format("She swallowed the %s to catch the %s%s\n", animal1, animal2, punc);
+    private String middleLinesOfStanza(int stanzaNumber) {
+        String[] animals = new String[] {
+                "fly", "spider", "bird", "cat"
+        };
+        StringBuffer middleLines = new StringBuffer();
+        for (int currentStanza = stanzaNumber; currentStanza >= 2; currentStanza--) {
+            String punc = currentStanza == 2 ? ";" : ",";
+            middleLines.append(
+                    String.format("She swallowed the %s to catch the %s%s\n",
+                            animals[currentStanza - 1],
+                            animals[currentStanza - 2],
+                            punc));
+        }
+        return middleLines.toString();
     }
 
     private String lastLineOfStanza() {
