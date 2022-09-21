@@ -6,13 +6,8 @@ public class SongGenerator {
         sb.append(firstStanza());
         sb.append(secondStanza());
         sb.append(thirdStanza());
-        String song = "There was an old lady who swallowed a cat;\n" +
-                "Fancy that to swallow a cat!\n" +
-                "She swallowed the cat to catch the bird,\n" +
-                "She swallowed the bird to catch the spider,\n" +
-                "She swallowed the spider to catch the fly;\n" +
-                "I don't know why she swallowed a fly - perhaps she'll die!\n" +
-                "\n" +
+        sb.append(fourthStanza());
+        String song =
                 "There was an old lady who swallowed a dog;\n" +
                 "What a hog, to swallow a dog!\n" +
                 "She swallowed the dog to catch the cat,\n" +
@@ -36,7 +31,6 @@ public class SongGenerator {
         return sb.toString();
     }
 
-
     private String firstStanza() {
         return firstLineOfStanza("fly", ".") +
                 lastLineOfStanza();
@@ -56,6 +50,16 @@ public class SongGenerator {
                 thirdLineOfStanza("spider", "fly", ";") +
                 lastLineOfStanza();
     }
+
+    private String fourthStanza() {
+        return firstLineOfStanza("cat", ";") +
+                secondLineOfStanza(4) +
+                thirdLineOfStanza("cat", "bird", ",") +
+                thirdLineOfStanza("bird", "spider", ",") +
+                thirdLineOfStanza("spider", "fly", ";") +
+                lastLineOfStanza();
+    }
+
     private String lastStanza() {
         return firstLineOfStanza("horse", "...") +
                 lastLineLastStanza();
@@ -68,7 +72,8 @@ public class SongGenerator {
     private String secondLineOfStanza(int stanzaNumber) {
         String[] secondLines = new String[] {
                 "That wriggled and wiggled and tickled inside her.\n",
-                "How absurd to swallow a bird.\n"
+                "How absurd to swallow a bird.\n",
+                "Fancy that to swallow a cat!\n"
         };
         return secondLines[stanzaNumber - 2];
     }
